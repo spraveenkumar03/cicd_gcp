@@ -33,6 +33,7 @@ pipeline {
         stage('Build Image') {
             steps {
                 sh '''
+                export PATH=/usr/local/bin:$PATH
                 docker build -t $REGION-docker.pkg.dev/$PROJECT_ID/$REPO_NAME/$IMAGE_NAME:$IMAGE_TAG .
                 '''
             }
