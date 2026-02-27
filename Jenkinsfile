@@ -42,6 +42,9 @@ pipeline {
         stage('Push Image') {
             steps {
                 sh '''
+                export PATH=/Users/praveen/google-cloud-sdk/bin/gcloud
+                gcloud --version
+                gcloud config set project cicd-27feb
                 gcloud auth configure-docker $REGION-docker.pkg.dev
                 docker push $REGION-docker.pkg.dev/$PROJECT_ID/$REPO_NAME/$IMAGE_NAME:$IMAGE_TAG
                 '''
