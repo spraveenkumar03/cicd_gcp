@@ -19,16 +19,16 @@ pipeline {
             }
         }
 
-        stage('Authenticate to GCP') {
-            steps {
-                withCredentials([file(credentialsId: 'gcp-key', variable: 'GCP_KEY')]) {
-                    sh '''
-                    gcloud auth activate-service-account --key-file=$GCP_KEY
-                    gcloud config set project $PROJECT_ID
-                    '''
-                }
-            }
-        }
+        // stage('Authenticate to GCP') {
+        //     steps {
+        //         withCredentials([file(credentialsId: 'gcp-key', variable: 'GCP_KEY')]) {
+        //             sh '''
+        //             gcloud auth activate-service-account --key-file=$GCP_KEY
+        //             gcloud config set project $PROJECT_ID
+        //             '''
+        //         }
+        //     }
+        // }
 
         stage('Build Image') {
             steps {
