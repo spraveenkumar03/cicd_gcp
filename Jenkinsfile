@@ -42,7 +42,10 @@ pipeline {
         stage('Push Image') {
             steps {
                 sh '''
-                export PATH=/Users/praveen/google-cloud-sdk/bin
+                export PATH=/Users/praveen/google-cloud-sdk/bin:/usr/local/bin:$PATH
+                echo "PATH is: $PATH"
+                which gcloud
+                which docker
                 gcloud --version
                 gcloud config set project cicd-27feb
                 gcloud auth configure-docker $REGION-docker.pkg.dev
