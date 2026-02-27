@@ -60,11 +60,9 @@ pipeline {
                 export PATH=/Users/praveen/google-cloud-sdk/bin:/usr/local/bin:$PATH
                 gcloud container clusters get-credentials $CLUSTER_NAME --zone $CLUSTER_ZONE
 
-                kubectl set image deployment/gke-cicd-demo \
-                gke-cicd-demo=$REGION-docker.pkg.dev/$PROJECT_ID/$REPO_NAME/$IMAGE_NAME:$IMAGE_TAG \
-                --record
-
-                kubectl rollout status deployment/gke-cicd-demo
+                kubectl apply -f k8s/deployment.yaml
+                kubectl apply -f k8s/service.yaml
+                kubectl rollout status deployment/cicd
                 '''
             }
         }
