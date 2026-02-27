@@ -57,6 +57,7 @@ pipeline {
         stage('Deploy to GKE') {
             steps {
                 sh '''
+                export PATH=/Users/praveen/google-cloud-sdk/bin:/usr/local/bin:$PATH
                 gcloud container clusters get-credentials $CLUSTER_NAME --zone $CLUSTER_ZONE
 
                 kubectl set image deployment/gke-cicd-demo \
