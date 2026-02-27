@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: gke-cicd-demo
+  name: cicd
 spec:
   replicas: 3
   strategy:
@@ -11,15 +11,15 @@ spec:
       maxSurge: 1
   selector:
     matchLabels:
-      app: gke-cicd-demo
+      app: cicd
   template:
     metadata:
       labels:
-        app: gke-cicd-demo
+        app: cicd
     spec:
       containers:
-      - name: gke-cicd-demo
-        image: IMAGE_PLACEHOLDER
+      - name: cicd
+        image: my-app
         ports:
         - containerPort: 3000
         readinessProbe:
