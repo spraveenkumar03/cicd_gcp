@@ -3,10 +3,10 @@ pipeline {
 
     environment {
         PROJECT_ID = "cicd-27feb"
-        CLUSTER_NAME = "your-cluster-name"
+        CLUSTER_NAME = "my-gke-cluster"
         CLUSTER_ZONE = "asia-south1-a"
-        REPO_NAME = "my-repo"
-        IMAGE_NAME = "gke-cicd-demo"
+        REPO_NAME = "cicd"
+        IMAGE_NAME = "my-app"
         IMAGE_TAG = "${BUILD_NUMBER}"
         REGION = "asia-south1"
     }
